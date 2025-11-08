@@ -35,12 +35,27 @@ print("=" * 70)
 
 # Attempt to initialize Earth Engine
 try:
+    # Try to initialize with default settings first
     ee.Initialize()
     print("\n✓ Earth Engine initialized successfully!")
 except Exception as e:
-    print(f"\n✗ Authentication required: {str(e)}")
-    print("\nRun: ee.Authenticate()")
-    exit(1)
+    # If no project error, try with the community project
+    if "no project" in str(e).lower():
+        print("\n⚠ No project found, trying with community project...")
+        try:
+            ee.Initialize(project='earthengine-legacy')
+            print("✓ Earth Engine initialized successfully with legacy project!")
+        except Exception as e2:
+            print(f"\n✗ Failed to initialize: {str(e2)}")
+            print("\nTo fix this, run:")
+            print("  ee.Initialize(project='your-cloud-project-id')")
+            print("\nOr create a cloud project at: https://console.cloud.google.com")
+            print("Then register it at: https://code.earthengine.google.com/register")
+            exit(1)
+    else:
+        print(f"\n✗ Authentication required: {str(e)}")
+        print("\nRun: python -c \"import ee; ee.Authenticate()\"")
+        exit(1)
 
 # ============================================================================
 # CONFIGURATION

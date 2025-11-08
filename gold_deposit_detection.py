@@ -51,7 +51,9 @@ REGIONS = {
     'alaska_fairbanks': ee.Geometry.Rectangle([-150.5, 64.5, -147.0, 65.5]),
     'alaska_juneau': ee.Geometry.Rectangle([-135.0, 57.5, -133.0, 58.5]),
     'arizona_phoenix': ee.Geometry.Rectangle([-112.5, 33.0, -111.0, 34.0]),
-    'arizona_tucson': ee.Geometry.Rectangle([-111.5, 31.5, -110.5, 32.5])
+    'arizona_tucson': ee.Geometry.Rectangle([-111.5, 31.5, -110.5, 32.5]),
+    'arizona_bradshaw_prescott': ee.Geometry.Rectangle([-112.6, 34.2, -112.0, 34.8]),
+    'arizona_flagstaff': ee.Geometry.Rectangle([-111.9, 35.0, -111.4, 35.5])
 }
 
 # Date range for imagery
